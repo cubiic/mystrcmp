@@ -28,6 +28,25 @@ If the return value is &gt;0, then one string is returned and is made up with
 the input strings inverted and merged; IE `uvwxyz` and `abcdef`, would be
 displayed as `zfyexdwcvbua`
 
+### Running the Perl version ###
+Assuming some type of Unix computer (Linux, OS X);
+
+    mv mystrcmp.zip.remove mystrcmp.zip
+    unzip mystrcmp.zip
+    cd mystrcmp/perl/MyStrCmp/bin
+    perl -I../lib mystrcmp.pl
+
+You can also run the unit test suite with:
+
+    cd mystrcmp/perl/MyStrCmp
+    perl Makefile.PL
+    make test
+
+Or run individual tests by hand with:
+
+    cd mystrcmp/perl/MyStrCmp
+    prove -v -Ilib 10-MyStrCmp.t
+
 ### My notes on the problem ###
 - The input strings 'a' and 'b', when they exist, are both assumed to be equal
   length
