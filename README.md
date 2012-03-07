@@ -28,5 +28,10 @@ If the return value is &gt;0, then one string is returned and is made up with
 the input strings inverted and merged; IE `uvwxyz` and `abcdef`, would be
 displayed as `zfyexdwcvbua`
 
+### My notes on the problem ###
+- The input strings 'a' and 'b', when they exist, are both assumed to be equal
+  length
+- The description doesn't say how the program should react when passing in two
+  null strings;
 
 vim: filetype=markdown tabstop=2

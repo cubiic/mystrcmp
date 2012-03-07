@@ -25,6 +25,11 @@ our $VERSION = '0.01';
  -b|--second    Second string to compare
  -s|--script    Scriptable output, i.e. machine readable, not human readable
 
+=cut
+
+### main script ###
+
+
 =head1 AUTHOR
 
 Brian Manning, C<< <cl at xaoc.org> >>

@@ -1,9 +1,12 @@
 #!perl -T
 
-use Test::More tests => 1;
+use Test::More tests => 2;
 
 BEGIN {
-	use_ok( 'MyStrCmp' );
+    use_ok( 'MyStrCmp' );
 }
 
-diag( "Testing MyStrCmp $MyStrCmp::VERSION, Perl $], $^X" );
+diag( "Testing edge conditions in MyStrCmp $MyStrCmp::VERSION,\nPerl $], $^X" );
+
+my $mycmp = MyStrCmp->new();
+isa_ok($mycmp, q(MyStrCmp));

@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-MyStrCmp - The great new MyStrCmp!
+MyStrCmp - String comparison function(s)
 
 =head1 VERSION
 
@@ -18,81 +18,62 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use MyStrCmp;
 
-    my $foo = MyStrCmp->new();
+    my $strcmp = MyStrCmp->new();
+    my $result = $strcmp->compare(a => q(abcdef), b => q(uvwxyz));
     ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
 
 =head1 FUNCTIONS
 
-=head2 function1
+=head2 new
+
+Creates and initializes a L<MyStrCmp> object and returns it to the caller.
 
 =cut
 
-sub function1 {
+sub new {
+    my $class = shift;
+    my $self = {};
+    $self->{a} = undef;
+    $self->{b} = undef;
+    bless($self, $class);
+    return $self;
 }
 
-=head2 function2
+=head2 compare ( a => q(string1), b => q(string2) )
+
+Compares two strings "using unsigned characters, so that C<\200> is greater
+than C<\0>" (from BSD's C<strcmp(3)>).
 
 =cut
 
-sub function2 {
+sub compare {
+    my $self = shift;
+    my %args = @_;
+
+    die(q|Missing 'a' argument for compare() method|)
+        unless ( exists($args{a}) );
+    die(q|Missing 'b' argument for compare() method|)
+        unless ( exists($args{b}) );
+    # FIXME check to see if both arguments are greater than zero length
+    # strings (i.e. not 'undef')
+
+    # - create a loop
+    # - in the loop, get a substring at character position 'X'
+    # - check to see if either character is undef, i.e. we've reached the end
+    # of the string
+    # - if we have no characters, then we are done, and both strings matched
+    # - if we have two characters, one from each string, compare the two
+    # characters
+    #   - if char a is less than char b, return -1
+    #   - if char a is greater than char b, return 1
+    return 0;
 }
 
 =head1 AUTHOR
 
 Brian Manning, C<< <cl at xaoc.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-mystrcmp at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MyStrCmp>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc MyStrCmp
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=MyStrCmp>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/MyStrCmp>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/MyStrCmp>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/MyStrCmp/>
-
-=back
-
-
-=head1 ACKNOWLEDGEMENTS
-
 
 =head1 COPYRIGHT & LICENSE
 
@@ -100,7 +81,6 @@ Copyright 2012 Brian Manning, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
-
 
 =cut
 
