@@ -35,8 +35,6 @@ Creates and initializes a L<MyStrCmp> object and returns it to the caller.
 sub new {
     my $class = shift;
     my $self = {};
-    $self->{a} = undef;
-    $self->{b} = undef;
     bless($self, $class);
     return $self;
 }
@@ -139,8 +137,9 @@ sub compare {
 =head2 zipper  (a => $string_a, b => $string_b )
 
 Combines two strings by reading one character from the beginning of string
-'a', then one character from string 'b', and so on until there are no more
-characters left in either string.  Returns the combined string to the caller.
+'a', then one character from string 'b', then reading the next character from
+both 'a' and 'b' until there are no more characters left in either string.
+Returns the combined string to the caller.
 
 =cut
 
@@ -155,11 +154,14 @@ sub zipper {
     my $string_a = $args{a};
     my $string_b = $args{b};
 
+    # split up the two strings so that they can be compared character by
+    # character
     my @str_a = $self->mysplit( split_string => $string_a );
     my @str_b = $self->mysplit( split_string => $string_b );
     my $return_string;
     # while both arrays still have elements, combine the elements;
-    # don't use any undefined elements that are shifted from either array
+    # if the arrays are of unequal length, don't use any undefined elements
+    # that are shifted from either array
     my $shift_char;
     while ( scalar(@str_a) > 0 || scalar(@str_b) > 0 ) {
         $shift_char = shift(@str_a);
@@ -169,10 +171,11 @@ sub zipper {
     }
     return $return_string;
 }
+
 =head2 invert( invert_string => $string )
 
-Inverts the letters of the C<$string>, and returns the inverted string to the
-caller.
+Inverts (reverses) the letters of C<$string>, and returns the inverted string
+to the caller.
 
 =cut
 
