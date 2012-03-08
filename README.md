@@ -9,22 +9,22 @@ Write a small console application that uses a string comparison function
 
 or assume passed String data types - for C#
 
-Entered or passed strings may be of any length, trap for edge conditions,
-and display error messages. Functions cannot make use of, or "wrap" any
-existing API calls (IE strlen(), strcmp(), ...). Function must return an int
-that is &lt;0 if string1 is less than string2; 0 if string1 is the same as
-string2; or &gt;0 if string1 is greater than string2; and display the 2 strings
-as noted below.
+0. Entered or passed strings may be of any length, trap for edge conditions,
+and display error messages. 
+0. Functions cannot make use of, or "wrap" any existing API calls (IE strlen(), strcmp(), ...). 
+0. Function must return an `int` that is `&lt; 0` if string1 is less than
+string2, `0` if string1 is the same as string2, or `&gt; 0` if string1 is
+greater than string2; and display the 2 strings as noted below.
 
-If the return value is &lt;0, then one string is returned and is made up with
+If the return value is `&lt; 0`, then one string is returned and is made up with
 the two strings inverted and then concatenated, IE `abcdef` and `uvwxyz`, would
 be displayed as `fedcbazyxwvu`.
 
-If the return value is 0, then one string is returned and is made up with
+If the return value is `0`, then one string is returned and is made up with
 the merged 2 input strings; IE `abcdef` and `abcdef`, would be displayed as
 `aabbccddeeff`.
 
-If the return value is &gt;0, then one string is returned and is made up with
+If the return value is `&gt; 0`, then one string is returned and is made up with
 the input strings inverted and merged; IE `uvwxyz` and `abcdef`, would be
 displayed as `zfyexdwcvbua`
 
@@ -36,7 +36,7 @@ Assuming some type of Unix computer (Linux, OS X);
     cd mystrcmp/perl/MyStrCmp/bin
     perl -I../lib mystrcmp.pl
 
-You can also run the unit test suite with:
+You can also run the test suite with:
 
     cd mystrcmp/perl/MyStrCmp
     perl Makefile.PL
