@@ -13,8 +13,13 @@ int main (int argc, const char * argv[])
 
     @autoreleasepool {
         
-        // insert code here...
-        NSLog(@"Hello, World!");
+        // check to see that all arguments were passed in
+        //NSLog(@"Hello, World! Number of arguments: %i", argc);
+        if ( argc < 3 ) {
+            printf("Error: requires two strings to compare as arguments\n");
+            printf("Usage: mystrcmp <string 1> <string 2>\n");
+            return 1;
+        }
         
     }
     return 0;
