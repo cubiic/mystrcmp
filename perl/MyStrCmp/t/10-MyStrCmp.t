@@ -15,7 +15,6 @@ my $mycmp = MyStrCmp->new();
 my $str_a = q(abcd);
 my $str_b = q(wxyz);
 my $str_e = q();
-my $str_t = q(abcd); # 't' for 'test', a duplicate of 'a' for testing
 
 my @split = $mycmp->mysplit(split_string => $str_a);
 is(scalar(@split), 4, q(mysplit split str_a into an array with 4 elements));
