@@ -29,14 +29,15 @@ the input strings inverted and merged; IE `uvwxyz` and `abcdef`, would be
 displayed as `zfyexdwcvbua`
 
 ### Running the Perl version ###
-Assuming some type of Unix computer (Linux, OS X);
+Assuming some type of Unix computer (Linux, OS X), you can run the script
+directly from the unpacked archive directory;
 
     mv mystrcmp.zip.remove mystrcmp.zip
     unzip mystrcmp.zip
-    cd mystrcmp/perl/MyStrCmp/bin
-    perl -I../lib mystrcmp.pl --first abcdef --second uvwxyz
-    perl -I../lib mystrcmp.pl --first abcdef --first abcdef
-    perl -I../lib mystrcmp.pl --second abcdef --first uvwxyz
+    cd mystrcmp/perl/MyStrCmp
+    perl -Ilib bin/mystrcmp.pl --first abcdef --second uvwxyz
+    perl -Ilib bin/mystrcmp.pl --first abcdef --first abcdef
+    perl -Ilib bin/mystrcmp.pl --second abcdef --first uvwxyz
 
 You can also run the test suite with:
 
