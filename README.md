@@ -47,7 +47,7 @@ You can also run the test suite with:
 Or run individual tests by hand with:
 
     cd mystrcmp/perl/MyStrCmp
-    prove -v -Ilib 10-MyStrCmp.t
+    prove -v -Ilib t/10-MyStrCmp.t
 
 You can generate docs with:
 
