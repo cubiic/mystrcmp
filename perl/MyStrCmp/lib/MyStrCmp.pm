@@ -113,14 +113,84 @@ sub compare {
         $char_counter++;
     }
 
+    my $combined_string;
     print qq(Comparison of string A and string B;\n);
     print qq(string A: $string_a is );
-    if ( $return_value == -1 ) { print q(less than ); }
-    if ( $return_value == 0 ) { print q(equal to ); }
-    if ( $return_value == 1 ) { print q(greater than ); }
+    if ( $return_value == -1 ) {
+        print q(less than );
+        $combined_string =
+            $self->invert(invert_string => $string_a)
+            . $self->invert(invert_string => $string_b);
+    } elsif ( $return_value == 0 ) {
+        print q(equal to );
+        $combined_string = $self->zipper(a => $string_a, b => $string_b);
+    } elsif ( $return_value == 1 ) {
+        print q(greater than );
+        $combined_string = $self->zipper(
+            a => $self->invert(invert_string => $string_a),
+            b => $self->invert(invert_string => $string_b) );
+    }
     print qq(string B: $string_b\n);
+    print qq(Combined string is: $combined_string\n);
 
     return $return_value;
+}
+
+=head2 zipper  (a => $string_a, b => $string_b )
+
+Combines two strings by reading one character from the beginning of string
+'a', then one character from string 'b', and so on until there are no more
+characters left in either string.  Returns the combined string to the caller.
+
+=cut
+
+sub zipper {
+    my $self = shift;
+    my %args = @_;
+
+    die(qq(ERROR: missing string 'a' to combine))
+        unless ( exists $args{a} );
+    die(qq(ERROR: missing string 'b' to combine))
+        unless ( exists $args{b} );
+    my $string_a = $args{a};
+    my $string_b = $args{b};
+
+    my @str_a = $self->mysplit( split_string => $string_a );
+    my @str_b = $self->mysplit( split_string => $string_b );
+    my $return_string;
+    # while both arrays still have elements, combine the elements;
+    # don't use any undefined elements that are shifted from either array
+    my $shift_char;
+    while ( scalar(@str_a) > 0 || scalar(@str_b) > 0 ) {
+        $shift_char = shift(@str_a);
+        $return_string .= $shift_char if (defined $shift_char);
+        $shift_char = shift(@str_b);
+        $return_string .= $shift_char if (defined $shift_char);
+    }
+    return $return_string;
+}
+=head2 invert( invert_string => $string )
+
+Inverts the letters of the C<$string>, and returns the inverted string to the
+caller.
+
+=cut
+
+sub invert {
+    my $self = shift;
+    my %args = @_;
+
+    die(qq(ERROR: missing string to invert as 'invert_string'))
+        unless ( exists $args{invert_string} );
+    my $input = $args{invert_string};
+
+    my @string = $self->mysplit( split_string => $input );
+    my $return_string;
+    while ( scalar(@string) > 0 ) {
+        # pop the last value off of @string
+        $return_string .= pop(@string);
+    }
+    return $return_string;
 }
 
 =head2 mysplit ( split_string => $string )
