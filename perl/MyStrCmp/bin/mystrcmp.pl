@@ -3,6 +3,11 @@
 use warnings;
 use strict;
 
+# system modules
+use Getopt::Long;
+# local modules
+use MyStrCmp;
+
 =head1 NAME
 
 mystrcmp.pl - Demo the L<MyStrCmp> library
@@ -15,7 +20,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
  mystrcmp.pl [options]
@@ -23,12 +27,24 @@ our $VERSION = '0.01';
  Options:
  -a|--first     First string to compare
  -b|--second    Second string to compare
- -s|--script    Scriptable output, i.e. machine readable, not human readable
 
 =cut
 
 ### main script ###
+    my %opts;
+    $opts{colorize} = 1;
+    my $p = Getopt::Long::Parser->new();
 
+    $p->getoptions(
+        \%opts,
+        q(a|first=s),
+        q(b|second=s),
+    );
+
+    die(qq(Missing --first string to compare)) unless ( defined $opts{a} );
+    die(qq(Missing --second string to compare)) unless ( defined $opts{b} );
+    my $cmp = MyStrCmp->new();
+    $cmp->compare(a => $opts{a}, b => $opts{b});
 
 =head1 AUTHOR
 
