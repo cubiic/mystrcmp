@@ -2,8 +2,11 @@ Changes
 MANIFEST
 Makefile.PL
 README
-bin/mystrcml.pl
+bin/mystrcmp.pl
 lib/MyStrCmp.pm
 t/00-load.t
+t/10-MyStrCmp.t
+t/20-edge_conditions.t
+t/30-string_comparison.t
 t/pod-coverage.t
 t/pod.t
