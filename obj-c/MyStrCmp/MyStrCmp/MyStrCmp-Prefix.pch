@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MyStrCmp' target in the 'MyStrCmp' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
