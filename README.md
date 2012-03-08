@@ -47,6 +47,11 @@ Or run individual tests by hand with:
     cd mystrcmp/perl/MyStrCmp
     prove -v -Ilib 10-MyStrCmp.t
 
+You can generate docs with:
+
+    cd mystrcmp/perl/MyStrCmp
+    perldoc lib/MyStrCmp.pm
+
 ### My notes on the problem ###
 - The input strings 'a' and 'b', when they exist, are both assumed to be equal
   length
