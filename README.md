@@ -34,7 +34,9 @@ Assuming some type of Unix computer (Linux, OS X);
     mv mystrcmp.zip.remove mystrcmp.zip
     unzip mystrcmp.zip
     cd mystrcmp/perl/MyStrCmp/bin
-    perl -I../lib mystrcmp.pl
+    perl -I../lib mystrcmp.pl --first abcdef --second uvwxyz
+    perl -I../lib mystrcmp.pl --first abcdef --first abcdef
+    perl -I../lib mystrcmp.pl --second abcdef --first uvwxyz
 
 You can also run the test suite with:
 
@@ -51,11 +53,5 @@ You can generate docs with:
 
     cd mystrcmp/perl/MyStrCmp
     perldoc lib/MyStrCmp.pm
-
-### My notes on the problem ###
-- The input strings 'a' and 'b', when they exist, are both assumed to be equal
-  length
-- The description doesn't say how the program should react when passing in two
-  null strings;
 
 vim: filetype=markdown tabstop=2
