@@ -43,4 +43,4 @@ is($mycmp->compare(a => $str_b, b => $str_b_shorter), 1,
 is($mycmp->compare(a => $str_a, b => $str_a), 0,
     q|compare() with 'a' equal to 'b' returns '0'|);
 
-done_testing();
+done_testing(9);

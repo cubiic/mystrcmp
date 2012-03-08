@@ -62,4 +62,4 @@ is($mycmp->compare(a => $str_a, b => $str_a), 0,
 is($mycmp->compare(a => $str_b, b => $str_a), 1,
     q|compare() with 'a' greater than 'b' returns '1'|);
 
-done_testing();
+done_testing(12);
