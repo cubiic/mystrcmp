@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MyStrCmp.h"
 
 int main (int argc, const char * argv[])
 {
@@ -20,6 +21,13 @@ int main (int argc, const char * argv[])
             printf("Usage: mystrcmp <string 1> <string 2>\n");
             return 1;
         }
+        NSString *a = @"string_a";
+        NSString *b = @"string_b";
+        MyStrCmp *cmp = [[MyStrCmp alloc] init];
+        [cmp compare:a withStringB:b];
+        [cmp invert:a];
+        [cmp split:b];
+        [cmp zipper:a withStringB:b];
         
     }
     return 0;
