@@ -10,4 +10,10 @@
 
 @interface MyStrCmp : NSObject
 
+-(int) compare:(NSString *) stringA 
+   withStringB:(NSString *) stringB;
+-(NSString *) invert:(NSString *) invertString;
+-(NSMutableArray *) split:(NSString *) splitString;
+-(NSString *) zipper:(NSString *) stringA 
+         withStringB:(NSString *) stringB;
 @end
