@@ -19,7 +19,7 @@ int main (int argc, const char * argv[])
         if ( argc < 3 ) {
             printf("Error: requires two strings to compare as arguments\n");
             printf("Usage: mystrcmp <string 1> <string 2>\n");
-            return 1;
+            exit(1);
         }
         NSString *a = @"string_a";
         NSString *b = @"string_b";
@@ -30,6 +30,6 @@ int main (int argc, const char * argv[])
         [cmp zipper:a withStringB:b];
         
     }
-    return 0;
+    exit(0);
 }
 
