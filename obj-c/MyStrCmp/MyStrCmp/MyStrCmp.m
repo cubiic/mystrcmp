@@ -14,8 +14,7 @@
 -(int) compare:(NSString *) stringA 
    withStringB:(NSString *) stringB
 {
-    NSLog(@"compare: stringA: %@", stringA);
-    NSLog(@"compare: stringB: %@", stringB);
+    NSLog(@"compare: stringA: %@, stringB: %@", stringA, stringB);
     return 0;
 }
 
@@ -39,8 +38,7 @@
 -(NSString *) zipper:(NSString *) stringA 
          withStringB:(NSString *) stringB
 {
-    NSLog(@"zipper: stringA: %@", stringA);
-    NSLog(@"zipper: stringB: %@", stringB);
+    NSLog(@"zipper: stringA: %@, stringB: %@", stringA, stringB);
     return [NSString stringWithFormat:@"%@%@", stringA, stringB];
 }
 
