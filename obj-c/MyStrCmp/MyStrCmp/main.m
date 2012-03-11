@@ -25,8 +25,14 @@ int main (int argc, const char * argv[])
         NSString *b = @"string_b";
         MyStrCmp *cmp = [[MyStrCmp alloc] init];
         [cmp compare:a withStringB:b];
-        [cmp invert:a];
-        [cmp split:b];
+        NSLog(@"inverted string: %@", [cmp invert:a]);
+        // create an array to hold the output of the split call
+        NSMutableArray *arrayB = [[NSMutableArray alloc] init];
+        // split the string, add it to arrayB
+        [arrayB addObjectsFromArray:[cmp split:b]];
+//        for (NSString *s in arrayB) {
+//            NSLog(@"%@:", s);
+//        }
         [cmp zipper:a withStringB:b];
         
     }
