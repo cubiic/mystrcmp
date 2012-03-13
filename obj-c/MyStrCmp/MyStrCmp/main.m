@@ -33,7 +33,7 @@ int main (int argc, const char * argv[])
 //        for (NSString *s in arrayB) {
 //            NSLog(@"%@:", s);
 //        }
-        [cmp zipper:a withStringB:b];
+        NSLog(@"zippered string: %@", [cmp zipper:a withStringB:b]);
         
     }
     exit(0);
