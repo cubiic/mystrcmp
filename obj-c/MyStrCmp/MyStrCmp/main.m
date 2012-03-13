@@ -24,16 +24,19 @@ int main (int argc, const char * argv[])
         NSString *a = @"abcdef";
         NSString *b = @"uvwxyz";
         MyStrCmp *cmp = [[MyStrCmp alloc] init];
-        [cmp compare:a withStringB:b];
-        NSLog(@"inverted string: %@", [cmp invert:a]);
+        
+        // some faux unit tests, which have been jcommented out
+//        NSLog(@"inverted string: %@", [cmp invert:a]);
         // create an array to hold the output of the split call
-        NSMutableArray *arrayB = [[NSMutableArray alloc] init];
+//        NSMutableArray *arrayB = [[NSMutableArray alloc] init];
         // split the string, add it to arrayB
-        [arrayB addObjectsFromArray:[cmp split:b]];
-//        for (NSString *s in arrayB) {
-//            NSLog(@"%@:", s);
-//        }
-        NSLog(@"zippered string: %@", [cmp zipper:a withStringB:b]);
+//        [arrayB addObjectsFromArray:[cmp split:b]];
+        //        for (NSString *s in arrayB) {
+        //            NSLog(@"%@:", s);
+        //        }
+//        NSLog(@"zippered string: %@", [cmp zipper:a withStringB:b]);
+        
+        [cmp compare:a withStringB:b];
         
     }
     exit(0);
