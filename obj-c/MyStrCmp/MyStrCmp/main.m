@@ -21,8 +21,8 @@ int main (int argc, const char * argv[])
             printf("Usage: mystrcmp <string 1> <string 2>\n");
             exit(1);
         }
-        NSString *a = @"string_a";
-        NSString *b = @"string_b";
+        NSString *a = @"abcdef";
+        NSString *b = @"uvwxyz";
         MyStrCmp *cmp = [[MyStrCmp alloc] init];
         [cmp compare:a withStringB:b];
         NSLog(@"inverted string: %@", [cmp invert:a]);
