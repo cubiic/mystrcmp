@@ -12,6 +12,8 @@
 
 #import "MyStrCmp.h"
 
+const int ARRAY_FIRST = 0;
+
 @implementation MyStrCmp
 
 // compare
@@ -73,8 +75,43 @@
 -(NSString *) zipper:(NSString *) stringA 
          withStringB:(NSString *) stringB
 {
+    // create a string that returns the contents of both strings 
+    // 'zippered' together
+    NSMutableString *returnString = [[NSMutableString alloc] init];
     NSLog(@"zipper: stringA: %@, stringB: %@", stringA, stringB);
-    return [NSString stringWithFormat:@"%@%@", stringA, stringB];
+    // create two mutable arrays, one each for stringA and stringB
+    NSMutableArray *ma = [[NSMutableArray alloc] 
+                          initWithArray:[self split:stringA]];
+    NSMutableArray *mb = [[NSMutableArray alloc] 
+                          initWithArray:[self split:stringB]];
+    
+// while both arrays still have elements, combine the elements;
+// if the arrays are of unequal length, don't use any undefined elements
+// that are shifted from either array
+
+    while ( [ma count] != 0 || [mb count] != 0 ) {
+        // try and appending a character from stringA
+        @try {
+            [returnString appendFormat:@"%@",[ma objectAtIndex:ARRAY_FIRST]];
+            [ma removeObjectAtIndex:ARRAY_FIRST];
+        }
+        @catch (NSException *exception) {
+            // noop
+        }
+
+        // now try and appending a character from stringB
+        @try {
+             [returnString appendString:[mb objectAtIndex:ARRAY_FIRST]];
+             [mb removeObjectAtIndex:ARRAY_FIRST];
+        }
+        @catch (NSException *exception) {
+            // noop
+        }
+//        NSLog(@"returnString is now %@", returnString);
+//        NSLog(@"counts are: a: %@ b: %@", [ma count], [mb count]);
+    }
+    //return [NSString stringWithFormat:@"%@%@", stringA, stringB];
+    return returnString;
 }
 
 @end
