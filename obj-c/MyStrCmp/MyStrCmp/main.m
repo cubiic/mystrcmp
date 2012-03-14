@@ -21,11 +21,13 @@ int main (int argc, const char * argv[])
             printf("Usage: mystrcmp <string 1> <string 2>\n");
             exit(1);
         }
-        
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        NSLog(@"This program is named %@.", [args objectAtIndex:0]);
+        NSLog(@"There are %lu arguments.", [args count] - 1);
 //        NSString *a = @"abcdef";
 //        NSString *b = @"uvwxyz";
-        NSString *a = argv[1];
-        NSString *b = argv[2];
+        NSString *a = [args objectAtIndex:1];
+        NSString *b = [args objectAtIndex:2];
         MyStrCmp *cmp = [[MyStrCmp alloc] init];
         
         // some faux unit tests, which have been jcommented out
@@ -42,6 +44,7 @@ int main (int argc, const char * argv[])
         [cmp compare:a withStringB:b];
         
     }
+    NSLog(@"exiting with an exit code of 0");
     exit(0);
 }
 
