@@ -62,16 +62,24 @@ const int ARRAY_FIRST = 0;
         if ( testA > testB ) {
             returnStatus = 1;
             NSLog(@"string A is greater than string B");
+            NSLog(@"concatenated strings: %@", 
+                  [self zipper:[self invert:stringA]
+                   withStringB:[self invert:stringB]]);
             endLoopFlag = YES;
         } else if ( testA < testB ) {
             returnStatus = -1;
             NSLog(@"string A is less than string B");
             endLoopFlag = YES;
+            NSLog(@"concatenated strings: %@", [NSString stringWithFormat:@"%@%@",
+                                                [self invert:stringA],
+                                                [self invert:stringB]]);
         }
     }
     //return [NSString stringWithFormat:@"%@%@", stringA, stringB];
     if ( returnStatus == 0 ) {
-        NSLog(@"string A is equal to string B");        
+        NSLog(@"string A is equal to string B"); 
+        NSLog(@"concatenated strings: %@", [self zipper:stringA 
+                                            withStringB:stringB]);
     }
     NSLog(@"returning status code '%i' to caller", returnStatus);
     return returnStatus;
