@@ -21,8 +21,11 @@ int main (int argc, const char * argv[])
             printf("Usage: mystrcmp <string 1> <string 2>\n");
             exit(1);
         }
-        NSString *a = @"abcdef";
-        NSString *b = @"uvwxyz";
+        
+//        NSString *a = @"abcdef";
+//        NSString *b = @"uvwxyz";
+        NSString *a = argv[1];
+        NSString *b = argv[2];
         MyStrCmp *cmp = [[MyStrCmp alloc] init];
         
         // some faux unit tests, which have been jcommented out

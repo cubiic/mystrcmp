@@ -20,8 +20,61 @@ const int ARRAY_FIRST = 0;
 -(int) compare:(NSString *) stringA 
    withStringB:(NSString *) stringB
 {
+    // assume the string comparison will succeed
+    int returnStatus = 0;
+    // some strings to use for testing
+    NSString *testA = [[NSString alloc] init];
+    NSString *testB = [[NSString alloc] init];
+    BOOL endLoopFlag = NO;
+    
     NSLog(@"compare: stringA: %@, stringB: %@", stringA, stringB);
-    return 0;
+
+    NSMutableArray *ma = [[NSMutableArray alloc] 
+                          initWithArray:[self split:stringA]];
+    NSMutableArray *mb = [[NSMutableArray alloc] 
+                          initWithArray:[self split:stringB]];
+    
+    // while both arrays still have elements, combine the elements;
+    // if the arrays are of unequal length, don't use any undefined elements
+    // that are shifted from either array
+    
+    // we will break out of the loop down below
+    while ( endLoopFlag == NO ) {
+        // try and grab a character from stringA
+        @try {
+            testA = [ma objectAtIndex:ARRAY_FIRST];
+            [ma removeObjectAtIndex:ARRAY_FIRST];
+        }
+        @catch (NSException *exception) {
+            endLoopFlag = YES;
+        }
+        
+        // now try and grab a character from stringB
+        @try {
+            testB = [mb objectAtIndex:ARRAY_FIRST];
+            [mb removeObjectAtIndex:ARRAY_FIRST];
+        }
+        @catch (NSException *exception) {
+            endLoopFlag = YES;
+        }
+        
+        // return status is already 0, so we don't test for equality here
+        if ( testA > testB ) {
+            returnStatus = 1;
+            NSLog(@"string A is greater than string B");
+            endLoopFlag = YES;
+        } else if ( testA < testB ) {
+            returnStatus = -1;
+            NSLog(@"string A is less than string B");
+            endLoopFlag = YES;
+        }
+    }
+    //return [NSString stringWithFormat:@"%@%@", stringA, stringB];
+    if ( returnStatus == 0 ) {
+        NSLog(@"string A is equal to string B");        
+    }
+    NSLog(@"returning status code '%i' to caller", returnStatus);
+    return returnStatus;
 }
 
 // invert the string passed in as invertString; return the inverted
