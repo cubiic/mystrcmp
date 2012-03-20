@@ -24,23 +24,10 @@ int main (int argc, const char * argv[])
         NSArray *args = [[NSProcessInfo processInfo] arguments];
         NSLog(@"This program is named %@.", [args objectAtIndex:0]);
         NSLog(@"There are %lu arguments.", [args count] - 1);
-//        NSString *a = @"abcdef";
-//        NSString *b = @"uvwxyz";
         NSString *a = [args objectAtIndex:1];
         NSString *b = [args objectAtIndex:2];
         MyStrCmp *cmp = [[MyStrCmp alloc] init];
-        
-        // some faux unit tests, which have been jcommented out
-//        NSLog(@"inverted string: %@", [cmp invert:a]);
-        // create an array to hold the output of the split call
-//        NSMutableArray *arrayB = [[NSMutableArray alloc] init];
-        // split the string, add it to arrayB
-//        [arrayB addObjectsFromArray:[cmp split:b]];
-        //        for (NSString *s in arrayB) {
-        //            NSLog(@"%@:", s);
-        //        }
-//        NSLog(@"zippered string: %@", [cmp zipper:a withStringB:b]);
-        
+                
         [cmp compare:a withStringB:b];
         
     }
